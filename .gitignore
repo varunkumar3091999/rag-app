@@ -1,1 +1,3 @@
 venv/
+rag-for-pdf/saved_embeddings.pkl
+.DS_Store
