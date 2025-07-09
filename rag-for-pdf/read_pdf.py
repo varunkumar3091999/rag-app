@@ -1,5 +1,3 @@
-
-import fitz
 import pdfplumber
 import re
 
@@ -21,7 +19,7 @@ def clean_text(text):
   text = text.replace("\n", " ")
   return text.strip()
 
-def split_into_chunks(text, chunk_size=500, overlap=200):
+def split_into_chunks(text, chunk_size=1000, overlap=0):
   chunks = []
   start = 0
   while start < len(text):
@@ -31,7 +29,8 @@ def split_into_chunks(text, chunk_size=500, overlap=200):
     start += chunk_size + overlap
   return chunks
 
-def remove_header_and_footer(text, header_keywords):
-  for kw in header_keywords:
-    text = text.replace(kw, "")
-  return text
+def remove_header_and_footer(text, keywords):
+  cleaned_text = text
+  for keyword in keywords:
+    cleaned_text = cleaned_text.replace(keyword, "")
+  return cleaned_text
